@@ -3,11 +3,7 @@ import java.util.Scanner;
 
 public class PrintArray {
 
-    public Scanner scanner, scanner1;
-    public int numItems;
-
-    public PrintArray(){
-
+    private PrintArray(){
     }
 
     public static void main(String[] args){
@@ -15,14 +11,14 @@ public class PrintArray {
         pa.run();
     }
 
-    public void run(){
-        scanner = new Scanner(System.in);
+    private void run(){
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the number of items: ");
-        numItems = scanner.nextInt();
+        int numItems = scanner.nextInt();
 
         Integer[] items = new Integer[numItems];
 
-        scanner1 = new Scanner(System.in);
+        Scanner scanner1 = new Scanner(System.in);
         System.out.print("Enter the value of all items (separated by space): ");
         for (int i = 0; i < items.length; i++){
             items[i] = scanner1.nextInt();

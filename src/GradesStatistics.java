@@ -4,12 +4,9 @@ import java.util.Scanner;
 public class GradesStatistics {
 
 
-    private Scanner scanner, scanner1;
-    private int numItems;
     private double totals;
 
-    public GradesStatistics(){
-
+    private GradesStatistics(){
     }
 
     public static void main(String[] args){
@@ -17,16 +14,17 @@ public class GradesStatistics {
         gs.run();
     }
 
-    public void run(){
-        scanner = new Scanner(System.in);
+    private void run(){
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the number of students: ");
-        numItems = scanner.nextInt();
+        int numItems = scanner.nextInt();
 
         int[] students = new int[numItems];
 
-        scanner1 = new Scanner(System.in);
+        Scanner scanner1 = new Scanner(System.in);
         for (int i = 1; i < students.length+1; i++){
             System.out.print("Enter the grade for student " + i + ": ");
+            //example data on question 50, 51, 56, 53.
             students[i-1] = scanner1.nextInt();
             totals += students[i-1];
         }
@@ -36,11 +34,28 @@ public class GradesStatistics {
         Arrays.sort(students); //required for below
 
         //String.format inspired my mkyong.com
-        System.out.println("The average is: " + String.format("%.2f",totals/numItems));
-        System.out.println("The median is: ");      //2 decimal places
+        System.out.println("The average is: " + String.format("%.2f",totals/ numItems));
+        System.out.println("The median is: " + String.format("%.2f",median(students)));
         System.out.println("The minimum is: " + students[0]);
         System.out.println("The maximum is: " + students[students.length-1]);
-        System.out.println("The standard deviation is: ");  //2 decimal places
+        System.out.println("The standard deviation is: " + standardDeviation());  //2 decimal places. Using sample data should be 2.29...
+    }
+
+    private double median(int[] students){
+        //doubles required as Math.floor and ceil require doubles
+        double firstPlace = Math.floor((students.length - 1.0) / 2.0);
+        //Math.floor rounds a decimal number down
+        double secondPlace = Math.ceil((students.length - 1.0) / 2.0);
+        //Math.ceil rounds a decimal number up
+        if (firstPlace == secondPlace ) {    //if pos1 == pos2, the array had an odd number of cells, meaning there is one already there
+            return students[(int)firstPlace];
+        } else {    //in this case, the array had an even number of cells
+            return (students[(int)firstPlace] + students[(int)secondPlace]) / 2.0 ;  //add the two elements and divide by 2 to get the number between them.
+        }
+    }
+
+    private double standardDeviation(){
+        return
     }
 
 }
