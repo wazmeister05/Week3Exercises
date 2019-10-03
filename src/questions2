@@ -1,9 +1,12 @@
 Exercises on Arrays – CS251 Task 3.15
 
 Question1
-Write a method called reverse(), which takes an array of int and reverse its contents. For example, the reverse of [1,2,3,4] is [4,3,2,1]. The method's signature is as follows:
+Write a method called reverse(), which takes an array of int and reverse its contents.
+For example, the reverse of [1,2,3,4] is [4,3,2,1]. The method's signature is as follows:
 public static void reverse(int[] array)
-Take note that the array passed into the method can be modified by the method (this is called "pass by reference"). On the other hand, primitives passed into a method cannot be modified. This is because a clone is created and passed into the method instead of the original copy (this is called "pass by value").
+Take note that the array passed into the method can be modified by the method (this is called "pass by reference").
+On the other hand, primitives passed into a method cannot be modified.
+This is because a clone is created and passed into the method instead of the original copy (this is called "pass by value").
 Also write a test driver to test this method.
 
 Hints
@@ -24,10 +27,12 @@ You need to use a temporary location to swap two storage locations.
 
 
 Question2
-Write a boolean method called copyOf(), which takes an int Array and returns a copy of the given array. The method's signature is as follows:
+Write a boolean method called copyOf(), which takes an int Array and returns a copy of the given array.
+The method's signature is as follows:
 public static int[] copyOf(int[] array)
 Also write a test driver to test this method.
-Write another version for copyOf() which takes a second parameter to specify the length of the new array. You should truncate or pad with zero so that the new array has the required length.
+Write another version for copyOf() which takes a second parameter to specify the length of the new array.
+You should truncate or pad with zero so that the new array has the required length.
 public static int[] copyOf(int[] array, int newLength)
 NOTES: This is similar to the built-in function Arrays.copyOf().
 
@@ -35,7 +40,8 @@ NOTES: This is similar to the built-in function Arrays.copyOf().
 
 
 Question 3
-Write a method called swap(), which takes two arrays of int and swap their contents if they have the same length. It shall return true if the contents are successfully swapped. The method's signature is as follows:
+Write a method called swap(), which takes two arrays of int and swap their contents if they have the same length.
+It shall return true if the contents are successfully swapped. The method's signature is as follows:
 public static boolean swap(int[] array1, int[] array2)
 Also write a test driver to test this method.
 
