@@ -2,12 +2,24 @@ import java.util.Arrays;
 
 public class Methods {
 
+    private static int[] test = new int[]{1,2,3,4,5};
+    private static int[] test1 = new int[]{101,79,43,21,9,1};
+    private static int[] test2 = new int[]{100,99,98,97,96};
+
     public static void main(String[] args){
+        System.out.println("Reversed");
         testReverse();
+        System.out.println("\nCopied");
+        testCopyOf();
+        System.out.println("\nCopied with length specified");
+        testCopyOfSpec();
+        System.out.println("\nSwap");
+        testSwap();
     }
 
+
     //Question 1
-    public static void reverse(int[] array){
+    private static void reverse(int[] array){
         int[] reversedArray = new int[array.length];
         for (int i = 0; i < array.length; i++){
             reversedArray[i] = array[(array.length-1)-i];
@@ -15,42 +27,62 @@ public class Methods {
         System.out.println(Arrays.toString(reversedArray));
     }
 
-    public static void testReverse(){
-        int[] test = new int[]{1,2,3,4,5};
-        int[] test1 = new int[]{101,79,43,21,9,1};
-        int[] test2 = new int[]{100,99,98,97,96};
+    private static void testReverse(){
         reverse(test);
         reverse(test1);
         reverse(test2);
     }
 
-        //Question 2
-        /*
-        Write a boolean method called copyOf(), which takes an int Array and returns a copy of the given array.
-        The method's signature is as follows:
-        public static int[] copyOf(int[] array)
-        Also write a test driver to test this method.
-        Write another version for copyOf() which takes a second parameter to specify the length of the new array.
-        You should truncate or pad with zero so that the new array has the required length.
-        public static int[] copyOf(int[] array, int newLength)
-        NOTES: This is similar to the built-in function Arrays.copyOf().
-     */
-    public static int[] copyOf(int[] array){
-        return null;
+
+    //Question 2
+    private static int[] copyOf(int[] array){
+        int[] copy = Arrays.copyOf(array, array.length);
+        return copy;
     }
 
-    public static int[] copyOfSpec(int[] array, int size){
-        return null;
+    private static void testCopyOf(){
+        System.out.println(Arrays.toString(copyOf(test)));
+        System.out.println(Arrays.toString(copyOf(test1)));
+        System.out.println(Arrays.toString(copyOf(test2)));
     }
 
-        //Question 3
+    private static int[] copyOfSpec(int[] array, int newLength){
+        int[] copy = Arrays.copyOf(array, newLength);
+        return copy;
+    }
+
+    private static void testCopyOfSpec() {
+        System.out.println(Arrays.toString(copyOfSpec(test,2)));
+        System.out.println(Arrays.toString(copyOfSpec(test1,10)));
+        System.out.println(Arrays.toString(copyOfSpec(test2,5)));
+    }
+
+
+    //Question 3
         /*
         Write a method called swap(), which takes two arrays of int and swap their contents if they have the same length.
         It shall return true if the contents are successfully swapped. The method's signature is as follows:
         public static boolean swap(int[] array1, int[] array2)
         Also write a test driver to test this method.
      */
-    public static boolean swap(int[] array1, int[] array2){
-        return true;
+    private static boolean swap(int[] array1, int[] array2){
+        if(array1.length == array2.length) {
+            int[] copy = copyOf(array1);
+            array1 = array2;
+            array2 = copy;
+            System.out.println(Arrays.toString(array1));
+            System.out.println(Arrays.toString(array2));
+            return true;
+        }
+        return false;
+    }
+
+    private static void testSwap(){
+        System.out.println(swap(test, test2));
+        System.out.println();
+        System.out.println(swap(test1, test2));
+        //test = {1,2,3,4,5}
+        //test1 = {101,79,43,21,9,1}
+        //test2 = {100,99,98,97,96}
     }
 }
