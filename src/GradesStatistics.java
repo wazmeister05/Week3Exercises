@@ -38,7 +38,7 @@ public class GradesStatistics {
         System.out.println("The median is: " + String.format("%.2f",median(students)));
         System.out.println("The minimum is: " + students[0]);
         System.out.println("The maximum is: " + students[students.length-1]);
-        System.out.println("The standard deviation is: " + standardDeviation());  //2 decimal places. Using sample data should be 2.29...
+        System.out.println("The standard deviation is: " + String.format("%.2f",standardDeviation(students, totals)));  //2 decimal places. Using sample data should be 2.29...
     }
 
     private double median(int[] students){
@@ -54,8 +54,15 @@ public class GradesStatistics {
         }
     }
 
-    private double standardDeviation(){
-        return
+    //how to calculate this was pulled from https://www.wikihow.com/Calculate-Standard-Deviation. No code was used from there.
+    private double standardDeviation(int[] students, double total){
+        int sampleSize = students.length;
+        double variance = 0;
+        double mean = total/sampleSize;
+        for(int i = 0; i < students.length; i++){
+            variance += Math.pow(students[i] - mean, 2);
+        }
+        return Math.sqrt(variance/(sampleSize - 1));
     }
 
 }
