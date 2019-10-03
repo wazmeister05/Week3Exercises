@@ -59,12 +59,6 @@ public class Methods {
 
 
     //Question 3
-        /*
-        Write a method called swap(), which takes two arrays of int and swap their contents if they have the same length.
-        It shall return true if the contents are successfully swapped. The method's signature is as follows:
-        public static boolean swap(int[] array1, int[] array2)
-        Also write a test driver to test this method.
-     */
     private static boolean swap(int[] array1, int[] array2){
         if(array1.length == array2.length) {
             int[] copy = copyOf(array1);
