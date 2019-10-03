@@ -39,6 +39,7 @@ public class GradesStatistics {
         System.out.println("The minimum is: " + students[0]);
         System.out.println("The maximum is: " + students[students.length-1]);
         System.out.println("The standard deviation is: " + String.format("%.2f",standardDeviation(students, totals)));  //2 decimal places. Using sample data should be 2.29...
+        System.out.println("The population standard deviation is: " + String.format("%.2f",popStandardDeviation(students, totals)));  //2 decimal places. Using sample data should be 2.29...
     }
 
     private double median(int[] students){
@@ -59,10 +60,19 @@ public class GradesStatistics {
         int sampleSize = students.length;
         double variance = 0;
         double mean = total/sampleSize;
-        for(int i = 0; i < students.length; i++){
-            variance += Math.pow(students[i] - mean, 2);
+        for (int student : students) {
+            variance += Math.pow(student - mean, 2);
         }
-        return Math.sqrt(variance/(sampleSize - 1));
+        return Math.sqrt(variance/(sampleSize -1));
     }
 
+    private double popStandardDeviation(int[] students, double total) {
+        int sampleSize = students.length;
+        double variance = 0;
+        double mean = total/sampleSize;
+        for (int student : students) {
+            variance += Math.pow(student - mean, 2);
+        }
+        return Math.sqrt(variance/(sampleSize));
+    }
 }
